@@ -25,14 +25,14 @@ serial = SerialGenerator(start="hi")
 import os
 import random
 
-class RandomWord:
+class WordFinder:
     _FILEPATH = os.path.join(os.curdir,"ignoreland","words.txt")
     _SEED = 8675309
 
-    def __init__(self, filepath=RandomWord._FILEPATH):
+    def __init__(self, filepath=_FILEPATH):
         file = open(filepath)
-        self.wordlist = file.read(500000).split("\n")
-        # self.wordlist = self.getwords(file)  # alternatively
+        # self.wordlist = file.read(500000).split("\n")
+        self.wordlist = self.getwords(file)  # alternatively
         print(str(len(self.wordlist)) + " words read")
 
     def getwords(self, file):
@@ -42,6 +42,14 @@ class RandomWord:
     def random(self):
         return random.choice(self.wordlist)
 
-wf = RandomWord()
+wf = WordFinder()
 wf.random()
 
+class SpecialWordFinder(WordFinder):
+    def getwords(self, file):
+        wordlist = super(SpecialWordFinder, self).getwords(file)
+        wordlist = [w.strip() for w in wordlist if w.strip() and not w.lower().startswith("b")]
+        return wordlist
+
+swf = SpecialWordFinder()
+swf.random()
