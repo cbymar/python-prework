@@ -308,7 +308,84 @@ def timeout(n_seconds):
 # https://www.springboard.com/workshops/data-engineering-career-track/learn#/curriculum/23961
 # Use decorators to cut down on repeated code
 # use @property to avoid writing getter setter methods
+# Use context managers to maintain state:
+# magic methods?
 
+# https://www.springboard.com/workshops/data-engineering-career-track/learn#/curriculum/23961
+# youtube codereport
+# cuDF, cuML, cuGraph   # CUDA allows gpu programming
+# cuDF is modeled off pandas.
+
+import reqeusts
+import lxml.html as lh
+import pandas as pd
+
+# replace for & += 1 with enumerate
+# "zip with index"
+# avoid ITM.
+# for T in tr_elements[1:]:   # step through slices of list.
+# T.iterchildren()
+# Ternary operator.
+# data = int(data) if data.isnumeric() else data
+# we can put the ternary statement into the statement of what we're doing with the result of the ternary expr.
+# for loops can turn into list comps.
+### He treats zip as a transpose function; which it basically is.
+# Rapids -- fast training of model.  rapids.ai
+# pythonbytes.
+from collections import defaultdict
+strs = ["eat","tea","tan","ate","nat","bat"]
+class Solution:
+
+    def anag(self, x):
+        ax = "".join(sorted(list(x)))
+        return [ax, x]
+
+    def groupAnagrams(self, strs):
+        accumdict = dict()
+        for _ in strs:
+            anagx = self.anag(_)
+            accumdict.setdefault(str(anagx[0]), []).append(str(anagx[1]))
+        return list(accumdict.values())
+
+solution = Solution()
+solution.groupAnagrams(strs)
+x = dict()
+x.setdefault()
+
+j = solution.anag("dinnertime")
+j[0]
+j[1]
+
+x.setdefault(j[0],[]).append(j[1])
+print(x)
+
+strs = ["eat","tea","tan","ate","nat","bat"]
+for _ in enumerate(strs):
+    print(_)
+##############################################################
+#
+%load_ext line_profiler
+
+%lprun -f functionname function_call()
+
+################################################################
+# For memory footprint profiling
+import sys
+import memory_profiler
+%load_ext memory_profiler
+%mprun -f function function(args, listed, out)
+# for mprun, the function must be imported from a file.
+
+#######################################
+# df.iterrows()  --> print(index and row)
+# don't use iloc for iterating over rows.
+# pandas rows are namedtuples; grab them using the .notation... unclear when spaces are present in names
+#######################################
+# apply for a fcn to a df.  remember to spec axis.
+
+# use pandas df["colname"].values in arithmetic (takes advantage of np)
+# range, enumerate, map, zip, itertools, collections, set
+# np arrays, lprun, mprun,
 
 
 
